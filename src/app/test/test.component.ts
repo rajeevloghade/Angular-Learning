@@ -41,6 +41,7 @@ export class TestComponent implements OnInit {
     color: "blue",
     fontStyle:"italic"
   }
+  public greeting= "";
 
 
   constructor() {}
@@ -49,5 +50,10 @@ export class TestComponent implements OnInit {
 
   greetUser() {
     return 'Hello ' + this.name;
+  }
+
+  onClick(){
+    console.log("Welcome to Angular");
+    this.greeting="Welcome to Angular on click"
   }
 }
