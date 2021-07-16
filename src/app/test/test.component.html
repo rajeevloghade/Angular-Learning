@@ -20,3 +20,8 @@
 <h2 class="text-special" [class]="successClass">test success + italic</h2>
 <h2 [class.text-danger]="hasError">test danger</h2>
 <h2 [ngClass]="messageClasses">ng Class directives</h2>
+
+<h2 style=color:black>Style Binding</h2>
+<h2 [style.color]="hasError?'green':'red'">Style Binding</h2>
+<h2 [style.color]="highlightColor">Style Binding</h2>
+<h2 [ngStyle]="titleStyles">Style Binding</h2>
