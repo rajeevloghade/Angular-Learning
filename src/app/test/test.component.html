@@ -11,4 +11,12 @@
     <h2 style=color:black>Property Binding</h2>
     <input [id]="myId" type="text" value="Rajeev">
     <input [disabled]="true" id="{{myId}}" type="text" value="Rajeev">
-  </div>
+
+</div>
+
+<h2 style=color:black>Class Binding</h2>
+<h2 class="text-success">test success</h2>
+<h2 [class]="successClass">test success</h2>
+<h2 class="text-special" [class]="successClass">test success + italic</h2>
+<h2 [class.text-danger]="hasError">test danger</h2>
+<h2 [ngClass]="messageClasses">ng Class directives</h2>

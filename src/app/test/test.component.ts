@@ -15,19 +15,29 @@ import { Component, OnInit } from '@angular/core';
 //   <h2>{{ greetUser() }}</h2>
 //   <h2>{{ siteUrl }}</h2>
 // </div>`,
-  // styleUrls: ['./test.component.css']
-  styles: [
-    `
-      div {
-        color: red;
-      }
-    `,
-  ],
+  styleUrls: ['./test.component.css'],
+  // styles: [
+  //   `
+  //     div {
+  //       color: red;
+  //     }
+  //   `,
+  // ],
 })
 export class TestComponent implements OnInit {
   public name = 'Rajeev Loghade';
   public siteUrl = window.location.href;
   public myId="testId";
+  public successClass="text-success";
+  public hasError=false;
+  public isSpecial=true;
+  public messageClasses={
+    "text-success":!this.hasError,
+    "text-danger":this.hasError,
+    "text-special":this.isSpecial
+  }
+
+
   constructor() {}
 
   ngOnInit(): void {}
