@@ -45,7 +45,8 @@
   {{userName}}
   <br>=======================================
 
-  <h2 style=color:black>Structral Directives</h2>
+  <h2 style=color:black>Structral Directives</h2>\
+  <h2 style=color:black>ngIf Directives</h2>
   <h1 *ngIf="displayName; else elseBlock">CodeEvolution</h1>
   <ng-template #elseBlock>
     <h1>Name is Hidden</h1>
@@ -59,4 +60,11 @@
     <h2>elseBlock2</h2>
   </ng-template>
 
+  <h2 style=color:green>ngSwitch Directives</h2>
+  <div [ngSwitch]="color">
+    <div *ngSwitchCase="'red'">You picked red color</div>
+    <div *ngSwitchCase="'green'">You picked green color</div>
+    <div *ngSwitchCase="'orange'">You picked Orange color</div>
+    <div *ngSwitchDefault>Pick again</div>
+  </div>
 </span>

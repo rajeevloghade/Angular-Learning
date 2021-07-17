@@ -45,6 +45,7 @@ export class TestComponent implements OnInit {
   public greeting= "";
   public userName= "";
   public displayName= false;
+  public color= "orange";
 
   constructor() {}
 
