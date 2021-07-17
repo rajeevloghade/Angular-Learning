@@ -72,4 +72,11 @@
   <div *ngFor="let color of colors; index as i; first as f; last as l; odd as o; even as e">
     <h2>{{i}} {{f}} {{l}} {{o}} {{e}} {{color}}</h2>
   </div>
+  <br>=======================================
+
+  <h2 style=color:black>Parent to child (component)</h2>
+  <h2>{{"Hello "+ parentName}}</h2>
+
+  <h2 style=color:black>Child to parent (component)</h2>
+  <button (click)="fireEvent()">send data</button>
 </span>
