@@ -7,11 +7,11 @@
     <h2>{{ name.toUpperCase() }}</h2>
     <h2>{{ greetUser() }}</h2>
     <h2>{{ siteUrl }}</h2>
-
+    =======================================
     <h2 style=color:black>Property Binding</h2>
     <input [id]="myId" type="text" value="Rajeev">
     <input [disabled]="true" id="{{myId}}" type="text" value="Rajeev">
-
+    <br>=======================================
 </div>
 
 <span>
@@ -21,18 +21,42 @@
   <h2 class="text-special" [class]="successClass">test success + italic</h2>
   <h2 [class.text-danger]="hasError">test danger</h2>
   <h2 [ngClass]="messageClasses">ng Class directives</h2>
+  =======================================
 
   <h2 style=color:black>Style Binding</h2>
   <h2 [style.color]="hasError?'green':'red'">Style Binding</h2>
   <h2 [style.color]="highlightColor">Style Binding</h2>
   <h2 [ngStyle]="titleStyles">Style Binding</h2>
+  =======================================
 
   <h2 style=color:black>Event Binding</h2>
   <button (click)="onClick($event)">Greet</button>
   <button (click)="greeting= 'Welcome Rajeev'">Greet two</button>
   {{greeting}}
+  <br>=======================================
 
   <h2 style=color:black>Template Variable Reference</h2>
   <input #myInput type="text">
-  <button (click)="logMessage(myInput.value)" >Log</button>
+  <button (click)="logMessage(myInput.value)">Log</button>
+  <br>=======================================
+
+  <h2 style=color:black>Two way binding</h2>
+  <input [(ngModel)]="userName" type="text">
+  {{userName}}
+  <br>=======================================
+
+  <h2 style=color:black>Structral Directives</h2>
+  <h1 *ngIf="displayName; else elseBlock">CodeEvolution</h1>
+  <ng-template #elseBlock>
+    <h1>Name is Hidden</h1>
+  </ng-template>
+
+  <div *ngIf="displayName; then thenBlock; else elseBlock2"></div>
+  <ng-template #thenBlock>
+    <h2>thenBlock</h2>
+  </ng-template>
+  <ng-template #elseBlock2>
+    <h2>elseBlock2</h2>
+  </ng-template>
+
 </span>

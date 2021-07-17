@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   // selector: '.app-test', //as a class name
   // selector: '[app-test]', //as a attribute name
@@ -42,7 +43,8 @@ export class TestComponent implements OnInit {
     fontStyle:"italic"
   }
   public greeting= "";
-
+  public userName= "";
+  public displayName= false;
 
   constructor() {}
 
