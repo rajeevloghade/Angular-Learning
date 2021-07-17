@@ -28,7 +28,11 @@
   <h2 [ngStyle]="titleStyles">Style Binding</h2>
 
   <h2 style=color:black>Event Binding</h2>
-  <button (click)="onClick()">Greet</button>
+  <button (click)="onClick($event)">Greet</button>
   <button (click)="greeting= 'Welcome Rajeev'">Greet two</button>
   {{greeting}}
+
+  <h2 style=color:black>Template Variable Reference</h2>
+  <input #myInput type="text">
+  <button (click)="logMessage(myInput.value)" >Log</button>
 </span>

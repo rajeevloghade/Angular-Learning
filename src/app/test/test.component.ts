@@ -52,8 +52,13 @@ export class TestComponent implements OnInit {
     return 'Hello ' + this.name;
   }
 
-  onClick(){
+  onClick(event:any){
+    console.log(event);
     console.log("Welcome to Angular");
     this.greeting="Welcome to Angular on click"
+  }
+
+  logMessage(value:any){
+   console.log(value) 
   }
 }
