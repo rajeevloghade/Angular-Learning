@@ -52,6 +52,13 @@ export class TestComponent implements OnInit {
 
   @Output() public childEvent = new EventEmitter();
 
+  public message = 'welcome to codeEvolution';
+  public person = {
+    firstName: 'John',
+    lastName: 'Dwayne',
+  };
+  public date = new Date();
+
   constructor() {}
 
   ngOnInit(): void {}
