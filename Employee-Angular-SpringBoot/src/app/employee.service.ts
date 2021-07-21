@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/employee';
 import { catchError } from 'rxjs/operators';
@@ -19,4 +23,14 @@ export class EmployeeService {
       .get<Employee[]>(this._url)
       .pipe(catchError(this.errorHandler));
   }
+
+  addEmployee(employee: Employee) {
+    let body = JSON.stringify(employee);
+    let headers = { 'content-type': 'application/json' };
+    let options = { headers: headers };
+    console.log(body);
+    return this._httpService.post(this._url, body, options);
+  }
+
+  
 }

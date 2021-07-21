@@ -1,1 +1,22 @@
-<p>employee-create works!</p>
+<br> <br>
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name :</label>
+            <input type="text" [(ngModel)]="employee.firstName" class="form-control" id="firstName">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name :</label>
+            <input type="text" [(ngModel)]="employee.lastName" class="form-control" id="lastName">
+        </div>
+        <div class="form-group">
+            <label for="emailId">Email Id :</label>
+            <input type="text" [(ngModel)]="employee.emailId" class="form-control" id="emailId">
+        </div>
+        <div class="form-group">
+            <label for="active">Active :</label>
+            <input type="text" [(ngModel)]="employee.active" class="form-control" id="active">
+        </div>
+        <button (onclick)="addEmployee()" class="btn btn-success">Submit</button>
+    </form>
+</div>
