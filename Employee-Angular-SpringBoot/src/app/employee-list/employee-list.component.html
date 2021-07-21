@@ -6,10 +6,9 @@
         <thead>
             <tr>
                 <th>Employee Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email Id</th>
-                <th>Active</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Address</th>
                 <th>Details</th>
                 <th>Update</th>
                 <th>Delete</th>
@@ -18,13 +17,13 @@
         <tbody>
             <tr *ngFor="let employee of employees">
                 <td>{{employee.id}} </td>
-                <td>{{employee.firstName}}</td>
-                <td>{{employee.lastName}}</td>
-                <td>{{employee.emailId}}</td>
-                <td>{{employee.active}}</td>
-                <td><button type="button" class="btn btn-info">Details</button></td>
-                <td><button type="button" class="btn btn-primary">Update</button></td>
-                <td><button type="button" class="btn btn-danger">Delete</button>
+                <td>{{employee.name}}</td>
+                <td>{{employee.department}}</td>
+                <td>{{employee.address}}</td>
+                <!-- <td><button (onclick)="getDetails()" type="button" class="btn btn-info">Details</button></td>
+                <td><button (onclick)="updateEmployee()" type="button" class="btn btn-primary">Update</button></td>
+                -->
+                <td><button (onclick)="deleteEmployee(employee.id)" type="button" class="btn btn-danger">Delete</button>
                 </td>
             </tr>
         </tbody>

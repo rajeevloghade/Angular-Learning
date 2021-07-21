@@ -12,15 +12,15 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EmployeeService {
-  public _url = '/assets/data/employee.json';
   constructor(private _httpService: HttpClient) {}
 
   errorHandler(error: HttpErrorResponse) {
     return Observable.throw(error.message || 'Server error');
   }
   getAllEmployees(): Observable<Employee[]> {
+    console.log("getAllEmployees invoked");
     return this._httpService
-      .get<Employee[]>(this._url)
+      .get<Employee[]>('http://localhost:8084/employee/getAllEmployee')
       .pipe(catchError(this.errorHandler));
   }
 
@@ -29,8 +29,16 @@ export class EmployeeService {
     let headers = { 'content-type': 'application/json' };
     let options = { headers: headers };
     console.log(body);
-    return this._httpService.post(this._url, body, options);
+    return this._httpService.post(
+      'http://localhost:8084/employee/addEmployee',
+      body,
+      options
+    );
   }
 
-  
+  deleteEmployee(employeeId: number) {
+    return this._httpService.delete(
+      'http://localhost:8084/employee/deleteEmployee/' + employeeId
+    );
+  }
 }

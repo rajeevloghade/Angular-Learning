@@ -25,4 +25,14 @@ export class EmployeeListComponent implements OnInit {
       (error) => console.log(error)
     );
   }
+
+  deleteEmployee(employeeId: number) {
+    this._employeeService.deleteEmployee(employeeId).subscribe(
+      (response) => {
+        console.log(response);
+        this.getEmployee();
+      },
+      (error) => console.log(error)
+    );
+  }
 }

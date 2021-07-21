@@ -11,7 +11,10 @@ import { EmployeeService } from '../employee.service';
 export class EmployeeCreateComponent implements OnInit {
   public employee = new Employee();
 
-  constructor(private _employeeService: EmployeeService, private _getEmployee:EmployeeListComponent) {}
+  constructor(
+    private _employeeService: EmployeeService,
+    private _employeeListComponent: EmployeeListComponent
+  ) {}
 
   ngOnInit(): void {
     this.addEmployee();
@@ -19,9 +22,21 @@ export class EmployeeCreateComponent implements OnInit {
 
   addEmployee() {
     this._employeeService.addEmployee(this.employee).subscribe(
-      (response) => {console.log(response),
-      this._getEmployee.getEmployee();},
+      (response) => {
+        console.log(response),
+          this.reset(),
+          this._employeeListComponent.getEmployee();
+      },
       (error) => console.log(error)
     );
+  }
+  private reset() {
+    console.log('Resetting');
+    (this.employee.name = ''),
+      (this.employee.department = ''),
+      (this.employee.address = '');
+  }
+  onSubmit() {
+    this.addEmployee();
   }
 }

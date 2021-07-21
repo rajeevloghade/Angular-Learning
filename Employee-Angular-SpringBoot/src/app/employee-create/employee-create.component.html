@@ -1,21 +1,18 @@
 <br> <br>
 <div class="container">
-    <form>
+    <h2>Add New Employee Details : </h2>
+    <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="firstName">First Name :</label>
-            <input type="text" [(ngModel)]="employee.firstName" class="form-control" id="firstName">
+            <label for="name">Name :</label>
+            <input type="text" [(ngModel)]="employee.name" required class="form-control" name="name">
         </div>
         <div class="form-group">
-            <label for="lastName">Last Name :</label>
-            <input type="text" [(ngModel)]="employee.lastName" class="form-control" id="lastName">
+            <label for="department">Department :</label>
+            <input type="text" [(ngModel)]="employee.department" required class="form-control" name="department">
         </div>
         <div class="form-group">
-            <label for="emailId">Email Id :</label>
-            <input type="text" [(ngModel)]="employee.emailId" class="form-control" id="emailId">
-        </div>
-        <div class="form-group">
-            <label for="active">Active :</label>
-            <input type="text" [(ngModel)]="employee.active" class="form-control" id="active">
+            <label for="address">Address :</label>
+            <input type="text" [(ngModel)]="employee.address" required class="form-control" name="address">
         </div>
         <button (onclick)="addEmployee()" class="btn btn-success">Submit</button>
     </form>
