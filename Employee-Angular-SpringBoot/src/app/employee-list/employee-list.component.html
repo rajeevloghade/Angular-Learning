@@ -1,5 +1,3 @@
-<br>
-<br>
 <div class="container">
     <h2>Employee Details:</h2>
     <table class="table">
@@ -14,18 +12,22 @@
                 <th>Delete</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="!loading">
             <tr *ngFor="let employee of employees">
                 <td>{{employee.id}} </td>
                 <td>{{employee.name}}</td>
                 <td>{{employee.department}}</td>
                 <td>{{employee.address}}</td>
-                <!-- <td><button (onclick)="getDetails()" type="button" class="btn btn-info">Details</button></td>
-                <td><button (onclick)="updateEmployee()" type="button" class="btn btn-primary">Update</button></td>
-                -->
-                <td><button (onclick)="deleteEmployee(employee.id)" type="button" class="btn btn-danger">Delete</button>
+                <td><button (click)="employeeDetails(employee.id)" type="button" class="btn btn-info">Details</button></td>
+                <td><button (click)="updateEmployee(employee.id)" type="button" class="btn btn-primary">Update</button>
+                </td>
+                <td><button (click)="deleteEmployee(employee.id)" type="button" class="btn btn-danger">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-warning" role="status">
+        </div>
+    </div>
 </div>

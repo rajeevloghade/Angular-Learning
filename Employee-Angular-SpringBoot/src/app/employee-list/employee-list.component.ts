@@ -1,5 +1,6 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/employee';
 import { EmployeeService } from '../employee.service';
 
@@ -10,17 +11,25 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeListComponent implements OnInit {
   public employees: Employee[] = [];
+  public employee: void;
+  public loading: boolean = false;
 
-  constructor(private _employeeService: EmployeeService) {}
+  constructor(
+    private _employeeService: EmployeeService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getEmployee();
+    this.getAllEmployee();
   }
 
-  getEmployee() {
+  getAllEmployee() {
+    this.loading = true;
     this._employeeService.getAllEmployees().subscribe(
       (employeeData) => {
-        (this.employees = employeeData), console.log(employeeData);
+        this.employees = employeeData;
+        console.log(employeeData);
+        this.loading = false;
       },
       (error) => console.log(error)
     );
@@ -30,9 +39,17 @@ export class EmployeeListComponent implements OnInit {
     this._employeeService.deleteEmployee(employeeId).subscribe(
       (response) => {
         console.log(response);
-        this.getEmployee();
+        this.getAllEmployee();
       },
       (error) => console.log(error)
     );
   }
+
+  employeeDetails(id: number) {
+    this.route.navigate(['employeeDetails', id]);
+  }
+  updateEmployee(id: number) {
+    this.route.navigate(['updateEmployee', id]);
+  }
+  
 }

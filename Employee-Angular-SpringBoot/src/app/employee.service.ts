@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/employee';
 import { catchError } from 'rxjs/operators';
@@ -17,8 +13,15 @@ export class EmployeeService {
   errorHandler(error: HttpErrorResponse) {
     return Observable.throw(error.message || 'Server error');
   }
+
+  getEmployeeById(employeeId: number) {
+    return this._httpService.get(
+      'http://localhost:8084/employee/getEmployeeById/' + employeeId
+    );
+  }
+
   getAllEmployees(): Observable<Employee[]> {
-    console.log("getAllEmployees invoked");
+    console.log('getAllEmployees invoked');
     return this._httpService
       .get<Employee[]>('http://localhost:8084/employee/getAllEmployee')
       .pipe(catchError(this.errorHandler));
@@ -40,5 +43,11 @@ export class EmployeeService {
     return this._httpService.delete(
       'http://localhost:8084/employee/deleteEmployee/' + employeeId
     );
+  }
+
+  updateEmployee(employee: Employee): Observable<any> {
+    return this._httpService
+      .put('http://localhost:8084/employee/updateEmployee', employee)
+      .pipe(catchError(this.errorHandler));
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/employee';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 import { EmployeeService } from '../employee.service';
@@ -10,22 +11,16 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeCreateComponent implements OnInit {
   public employee = new Employee();
+  submitted: boolean = false;
+  constructor(private router:Router, private _employeeService: EmployeeService) {}
 
-  constructor(
-    private _employeeService: EmployeeService,
-    private _employeeListComponent: EmployeeListComponent
-  ) {}
-
-  ngOnInit(): void {
-    this.addEmployee();
-  }
+  ngOnInit(): void {}
 
   addEmployee() {
     this._employeeService.addEmployee(this.employee).subscribe(
       (response) => {
-        console.log(response),
-          this.reset(),
-          this._employeeListComponent.getEmployee();
+        console.log(response), this.reset();
+        this.gotoList();
       },
       (error) => console.log(error)
     );
@@ -37,6 +32,10 @@ export class EmployeeCreateComponent implements OnInit {
       (this.employee.address = '');
   }
   onSubmit() {
+    this.submitted=true;
     this.addEmployee();
+  }
+  gotoList() {
+    this.router.navigate(['/employees']);
   }
 }
