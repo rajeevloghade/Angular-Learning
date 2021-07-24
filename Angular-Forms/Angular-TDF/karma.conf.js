@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/Employee-Angular-SpringBoot'),
+      dir: require('path').join(__dirname, './coverage/Angular-TDF'),
       subdir: '.',
       reporters: [
         { type: 'html' },
