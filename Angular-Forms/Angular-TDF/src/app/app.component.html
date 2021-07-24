@@ -5,11 +5,17 @@
         <hr> {{userModel|json}}
         <div class="form-group">
             <label>Name</label>
-            <input class="form-control" type="text" name="name" [(ngModel)]='userModel.name'>
+            <input class="form-control" required #name='ngModel' [class.is-invalid]='name.invalid && name.touched' type="text" name="name" [(ngModel)]='userModel.name'>
+            <small class="text-danger" [class.d-none]='name.valid || name.untouched'>Name is required</small>
         </div>
         <div class="form-group">
             <label>Phone</label>
-            <input class="form-control" type="tel" name="phone" [(ngModel)]='userModel.phone'>
+            <input class="form-control" required #phone='ngModel' pattern="^\d{10}$" [class.is-invalid]='phone.invalid && phone.touched' type="tel" name="phone" [(ngModel)]='userModel.phone'>
+            <!-- <small class="text-danger" [class.d-none]='phone.valid || phone.untouched'>Phone is required and must be of 10 digits</small> -->
+            <div *ngIf="phone.errors && (phone.invalid || phone.untouched)">
+                <small class="text-danger" *ngIf='phone.errors.required'>Phone is required</small>
+                <small class="text-danger" *ngIf='phone.errors.pattern'>Phone must be of 10 digits</small>
+            </div>
         </div>
         <div class="form-group">
             <label>Email</label>
