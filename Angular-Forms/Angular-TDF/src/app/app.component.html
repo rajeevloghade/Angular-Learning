@@ -1,8 +1,8 @@
 <div class="container-fluid mb-5">
     <h1>Template Driven Forms : </h1>
     <form #userForm="ngForm">
-        {{userForm.value|json}}
-        <hr> {{userModel|json}}
+        <!-- {{userForm.value|json}}
+        <hr> {{userModel|json}} -->
         <div class="form-group">
             <label>Name</label>
             <input class="form-control" required #name='ngModel' [class.is-invalid]='name.invalid && name.touched' type="text" name="name" [(ngModel)]='userModel.name'>
@@ -22,11 +22,11 @@
             <input class="form-control" type="email" name="email" [(ngModel)]='userModel.email'>
         </div>
         <div class="form-group">
-            <select class="custom-select" name="topic" [(ngModel)]='userModel.topic'>
-        <option selected>I'm Interested in</option>
+            <select (blur)='validateTopic(topic.value)' (change)='validateTopic(topic.value)' class="custom-select" required #topic='ngModel' [class.is-invalid]='topicHasError && topic.touched' name="topic" [(ngModel)]='userModel.topic'>
+        <option value="default">I'm Interested in</option>
         <option *ngFor='let topic of topics'>{{topic}}</option>
-
       </select>
+            <small class="text-danger" [class.d-none]='!topicHasError || topic.untouched'>Please choose a topic</small>
         </div>
 
         <!-- [(ngModel)]='userModel.name'Group for address  -->
