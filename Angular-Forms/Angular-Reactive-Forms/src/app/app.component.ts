@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Angular-Reactive-Forms';
+  registrationForm = new FormGroup({
+    userName: new FormControl('Rajeev'),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+    address: new FormGroup({
+      city: new FormControl('City'),
+      state: new FormControl(''),
+      postalCode: new FormControl(''),
+    }),
+  });
 
   onSubmit() {}
+
+  loadApiData() {
+    this.registrationForm.patchValue({
+      userName: 'Rajeev Loghade',
+      password: '1234',
+      confirmPassword: '1234',
+    });
+  }
+
+  // loadApiData() {
+  //   this.registrationForm.setValue({
+  //     userName: 'Rajeev Loghade',
+  //     password: '1234',
+  //     confirmPassword: '1234',
+  //     address: {
+  //       city: 'Indore',
+  //       state: 'MP',
+  //       postalCode: '452001',
+  //     },
+  //   });
+  // }
 }
