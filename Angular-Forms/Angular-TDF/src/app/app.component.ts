@@ -10,7 +10,8 @@ import { User } from './user';
 export class AppComponent {
   topics = ['Angular', 'React', 'Vue'];
   topicHasError = false;
-  submitted=false;
+  submitted = false;
+  errorMsg = '';
   userModel = new User(
     'Rob',
     'rob@gmail.com',
@@ -28,10 +29,11 @@ export class AppComponent {
   }
 
   onSubmit() {
-    this.submitted=true;
+    this.submitted = true;
     // console.log(this.userModel);
-    this.enrollService.enroll(this.userModel).subscribe((data) => {
-      console.log('Success! ', data), (error: any) => console.log(error);
-    });
+    this.enrollService.enroll(this.userModel).subscribe(
+      (data) => console.log('Success! ', data),
+      (error) => (this.errorMsg = error.statusText)
+    );
   }
 }
